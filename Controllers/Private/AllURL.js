@@ -2,11 +2,7 @@ const Url = require('../../Models/Url')
 
 module.exports = AllURL = async (req,res,next) => {
     try{
-        let urls = await Url.find({},'longURL shortUrl clicks',function(err,result){
-            if(err){
-                throw err;
-            }
-        }); 
+        let urls = await Url.find({},"longURL shortUrl clicks"); 
         //console.log(urls)
         return res.status(200).json({
             success : true,
