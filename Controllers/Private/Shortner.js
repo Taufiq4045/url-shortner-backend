@@ -26,7 +26,7 @@ exports.Shortner = async (req,res,next) => {
                         url
                     })
                 }
-                url = new Url({longURL,shortUrl : `${process.env.baseURL}/${shortUrl}`,shortcode : shortUrl})
+                url = new Url({longURL,shortUrl : `${process.env.Frontend_BaseURL}/${shortUrl}`,shortcode : shortUrl})
                 await url.save()
 
                 return res.status(200).json({
@@ -46,7 +46,7 @@ exports.Shortner = async (req,res,next) => {
 
 exports.RedirectShortUrl = async(req,res,next) => {
     try{
-        const url = await Url.findOne({shortUrl : `${process.env.baseURL}/${req.params.shortcode}`})
+        const url = await Url.findOne({shortUrl : `${process.env.Frontend_BaseURL}/${req.params.shortcode}`})
         
         if(url){
             url.clicks = url.clicks + 1;
